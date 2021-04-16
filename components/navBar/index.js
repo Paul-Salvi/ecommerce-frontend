@@ -1,62 +1,220 @@
 import SidebarBar from '../sidebar/index'
 const NavBar = () => (
-<div>
-  
-<nav
-        class="flex items-center justify-between flex-wrap bg-white py-4 lg:px-12 shadow border-solid border-t-2 border-blue-700">
-          
-        <div class="flex justify-between lg:w-auto w-full lg:border-b-0 pl-6 pr-2 border-solid border-b-2 border-gray-300 pb-5 lg:pb-0">
-            <div class="flex items-center flex-shrink-0 text-gray-800 mr-16">
-                <span class="font-semibold text-xl tracking-tight">My Navbar</span>
-               
-            </div>
-            <div class="block lg:hidden ">
-                <button
-                    id="nav"
-                    class="flex items-center px-3 py-2 border-2 rounded text-blue-700 border-blue-700 hover:text-blue-700 hover:border-blue-700">
-                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title>
-                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    
-        <div class="menu w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8">
-            <div class="text-md font-bold text-blue-700 lg:flex-grow">
-                <a href="#responsive-header"
-                   class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                    Menu 1
-                </a>
-                <a href="#responsive-header"
-                   class=" block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                    Menu 2
-                </a>
-                <a href="#responsive-header"
-                   class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                    Menu 3
-                </a>
-            </div>
-            
-            <div class="relative mx-auto text-gray-600 lg:block hidden">
+<div class="container relative">
+    <div class="shadow-xs py-6 lg:py-10 z-50 relative">
+        <div class="flex justify-between items-center">
+        <a href="/" className="p-4">
+                <img src="https://d33wubrfki0l68.cloudfront.net/23b5f665f19d2465fb9751d325b522bda9614e53/c3543/assets/img/logo-elyssi.svg" class="w-28 sm:w-48 h-auto" alt="logo" />
+            </a>
+            <div class="flex items-center">
+                
+            <div class=" relative mx-auto text-gray-600 lg:block hidden">
                 <input
-                    class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
+                    class="focus:ring-2 focus:ring-red-300 border-2 border-gray-300 bg-white h-10 pl-2 pr-8 w-96 rounded-lg text-sm focus:outline-none"
                     type="search" name="search" placeholder="Search" />
                 <button type="submit" class="absolute right-0 top-0 mt-3 mr-2" />
                    
                 
             </div>
-            <div class="flex ">
-                <a href="#"
+                </div>
+
+            <div class="flex items-center">
+            <a href="#"
                    class="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">Sign
                     in</a>
-    
-                <a href="#"
-                   class=" block text-md px-4  ml-2 py-2 rounded text-blue-700 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">login</a>
+                <a href="/account/dashboard" class="border-2 transition-all border-transparent hover:border-primary rounded-full p-2 sm:p-4 group">
+                    <img src="https://d33wubrfki0l68.cloudfront.net/f7d761469bf66852487412569632673f9d21d1f8/5e821/assets/img/icons/icon-user.svg" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 block group-hover:hidden" alt="icon user" />
+                    <img src="https://d33wubrfki0l68.cloudfront.net/813133414c7aa22b471f0e3efbe3ddfc3600d77e/3dc2c/assets/img/icons/icon-user-hover.svg" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 hidden group-hover:block" alt="icon user hover" />
+                </a>
+
+                <a href="/cart/index" class="hidden lg:block border-2 transition-all border-transparent hover:border-primary rounded-full p-2 sm:p-4 ml-2 sm:ml-3 md:ml-5 lg:ml-8 group">
+                    <img src="https://d33wubrfki0l68.cloudfront.net/16f4de05841e1eea2fbe536d4053b73f0ad85baf/77013/assets/img/icons/icon-cart.svg" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 block group-hover:hidden" alt="icon cart" />
+                    <img src="https://d33wubrfki0l68.cloudfront.net/bcbeda5344e5934d7eaa7a3e7f6e86b78d79755b/6df24/assets/img/icons/icon-cart-hover.svg" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 hidden group-hover:block" alt="icon cart hover" />
+                </a>
+
+                <span class="block lg:hidden border-2 transition-all border-transparent hover:border-primary rounded-full p-2 sm:p-4 ml-2 sm:ml-3 md:ml-5 lg:ml-8 group">
+                    <img src="https://d33wubrfki0l68.cloudfront.net/16f4de05841e1eea2fbe536d4053b73f0ad85baf/77013/assets/img/icons/icon-cart.svg" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 block group-hover:hidden" alt="icon cart" />
+                    <img src="https://d33wubrfki0l68.cloudfront.net/bcbeda5344e5934d7eaa7a3e7f6e86b78d79755b/6df24/assets/img/icons/icon-cart-hover.svg" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 hidden group-hover:block" alt="icon cart hover" />
+                </span>
+            </div>
+            <div class="hidden">
+                <i class="bx bx-menu text-primary text-3xl" ></i>
             </div>
         </div>
-    
-    </nav>
+        <div class="justify-center lg:pt-8 hidden lg:flex">
+            <ul class="list-reset flex items-center">
+                
+                
+                <li class="mr-10">
+                    <a href="/" class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Home</a>
+                </li>
+                
+                
+                
+                <li class="mr-10">
+                    <a href="/about" class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">About</a>
+                </li>
+                
+                
+                
+                <li class="mr-10 hidden lg:block group">
+                    <div class="border-b-2 border-white transition-colors group-hover:border-primary flex items-center">
+                        <span class="cursor-pointer text-lg font-hk group-hover:font-bold text-secondary group-hover:text-primary px-2 transition-all">Collections</span>
+                        <i class="bx bx-chevron-down text-secondary group-hover:text-primary pl-2 px-2 transition-colors"></i>
+                    </div>
+                    <div class="pt-10 absolute mt-40 top-0 left-0 right-0 z-50 w-2/3 mx-auto opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto ">
+                        <div class="transition-all flex bg-white shadow-lg p-8 rounded-b relative ">
+                            
+                            <div class="flex-1 relative z-20">
+                                <h4 class="font-hkbold text-base text-secondary mb-2">Man</h4>
+                                <ul>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Boots</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Blutcher Boot</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Chelsea Boot</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Chukka Boot</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Dress Boot</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Work Boot</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            <div class="flex-1 relative z-20">
+                                <h4 class="font-hkbold text-base text-secondary mb-2">Woman</h4>
+                                <ul>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Accessories</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Belts</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Caps</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Laces</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Socks</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            <div class="flex-1 relative z-20">
+                                <h4 class="font-hkbold text-base text-secondary mb-2">Kids</h4>
+                                <ul>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Shoes</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Derby Shoes</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Belts</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Caps</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Laces</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/collection-grid" class="text-sm font-hk text-secondary-lighter leading-loose border-b border-transparent hover:border-secondary-lighter">Socks</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            
+                            <div class="flex-1">
+                                {/* <div class="z-0 bg-contain bg-right-bottom bg-no-repeat absolute inset-0" style="background-image: url(/assets/img/unlicensed/bg-mega-menu.png)">
+                                </div> */}
+                                <div class="z-0 bg-contain bg-right-bottom bg-no-repeat absolute inset-0" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                
+                
+                <li class="mr-10">
+                    <a href="/blog" class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Blog</a>
+                </li>
+                
+                
+                
+                <li class="mr-10">
+                    <a href="/contact#faq" class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">FAQ</a>
+                </li>
+                
+                
+                
+                <li class="mr-10">
+                    <a href="/contact" class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Contact</a>
+                </li>
+                
+                
+            </ul>
+        </div>
     </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 );
 
 export default NavBar;
