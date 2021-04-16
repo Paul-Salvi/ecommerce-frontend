@@ -1,16 +1,14 @@
 import NavBar from '../components/common/navBar/index';
-import Welcome from '../components/welcome/index'
-import Products from '../components/products/index'
-import ProductDetails from '../components/productDetail/index'
+import Welcome from './welcome'
+import Products from './products'
+import ProductDetails from './productDetails'
+import Layout from '../components/common/layout/index'
+
 function Home({ props }) {
    return (
-      <div>
-         <NavBar />
-         <main>
-            {/* <Products /> */}
-            <ProductDetails />
-         </main>
-      </div>
+      <Layout>
+         <Welcome />
+      </Layout>
    )
 };
 

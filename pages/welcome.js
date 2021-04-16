@@ -1,6 +1,6 @@
 
 
-function Layout({ props }) {
+function Home({ props }) {
 
   return (
     <div>
@@ -45,4 +45,4 @@ function Layout({ props }) {
   )
 };
 
-export default Layout;
+export default Home;
