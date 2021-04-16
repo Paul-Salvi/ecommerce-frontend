@@ -1,5 +1,17 @@
-import SidebarBar from '../sidebar/index'
-const NavBar = () => (
+import { useRouter } from 'next/router'
+import Link from 'next/Link'
+
+
+function NavBar({ props }) {
+
+  const router = useRouter();
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push({ pathname: '/about' })
+  }
+  return (
+   
 <div class="container relative">
     <div class="shadow-xs py-6 lg:py-10 z-50 relative">
         <div class="flex justify-between items-center">
@@ -46,14 +58,16 @@ const NavBar = () => (
                 
                 
                 <li class="mr-10">
-                    <a href="/" class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Home</a>
+                    <a href="/products" class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">products</a>
                 </li>
                 
                 
                 
                 <li class="mr-10">
-                    <a href="/about" class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">About</a>
-                </li>
+                    <Link  href="/about">
+                    <a class="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">About</a>
+                    </Link>
+</li>
                 
                 
                 
@@ -212,9 +226,7 @@ const NavBar = () => (
 
 
 
-
-
-
-);
+  )
+};
 
 export default NavBar;
