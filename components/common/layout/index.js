@@ -1,19 +1,12 @@
 import NavBar from '../navBar/';
-import Products from '../productCard/index'
-import productData from '../../../shared/products.json'
 
-
-function Layout({ props }) {
-
-  return (
-    <div>
-      <NavBar />
-      <main>
-        <Products
-          items={productData} />       
-      </main>
-    </div>
-  )
-};
+const Layout = props => (
+  <div>
+    <NavBar />
+    <main>
+      {props.children}
+    </main>
+  </div>
+);
 
 export default Layout;

@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router'
+import Link from 'next/Link'
+
 
 function NavBar({ props }) {
 
   const router = useRouter();
-  
+
   const handleClick = (e) => {
     e.preventDefault()
     router.push({ pathname: '/about' })
@@ -18,9 +20,9 @@ function NavBar({ props }) {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-
-                <a href="/products" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Products</a>
-
+                <Link href="/products" >
+                  <a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                </Link>
               </div>
             </div>
           </div>
