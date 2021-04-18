@@ -1,4 +1,4 @@
-import StarRatings from '../starRatings/index'
+import StarRatings from '../productStarRatings/index'
 import LinkButton from '../linkButton/index'
 import Text from '../text/index'
 import Pagination from '../pagination/index'
@@ -13,7 +13,8 @@ function products({ items }) {
     );
   }
 
-  return (  
+
+  return (
     <>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
@@ -25,8 +26,10 @@ function products({ items }) {
                 </a>
                 <div className="mt-4">
                   <StarRatings />
-                  <LinkButton
-                    text={product.title} />
+                  <LinkButton                    
+                    text={product.title}                    
+                    id={product.id}
+                  />
                   <Text text={"$ " + product.price} />
                 </div>
               </div>
