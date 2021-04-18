@@ -26,9 +26,9 @@ function products({ items }) {
                 </a>
                 <div className="mt-4">
                   <StarRatings />
-                  <LinkButton                    
-                    text={product.title}                    
-                    id={product.id}
+                  <LinkButton
+                    text={product.title}
+                    href={"product/" + product.id}
                   />
                   <Text text={"$ " + product.price} />
                 </div>
