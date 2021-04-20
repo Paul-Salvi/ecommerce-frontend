@@ -16,7 +16,7 @@ function NavBar({ props }) {
     <div class="shadow-xs py-6 lg:py-10 z-50 relative">
         <div class="flex justify-between items-center">
         <a href="/" className="p-4">
-                <img src="https://d33wubrfki0l68.cloudfront.net/23b5f665f19d2465fb9751d325b522bda9614e53/c3543/assets/img/logo-elyssi.svg" class="w-28 sm:w-48 h-auto" alt="logo" />
+                <img src="http://www.danielledeveloper.com/wp-content/uploads/2018/04/Reactjs-logo-e1523253944211.png" class="w-28 sm:w-48 h-auto" alt="logo" />
             </a>
             <div class="flex items-center">
                 
