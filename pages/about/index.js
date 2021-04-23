@@ -1,10 +1,13 @@
-
+import Layout from '../../components/common/layout/index'
 
 function About() {
   return (
-   <div>
+    <Layout>
+    <div>
        about page
    </div>
+ </Layout>
+  
   )
 }
 
