@@ -6,20 +6,23 @@ import CategoryCard from '../components/common/product-category-card/'
 function Home({ props }) {
     return (
         <Layout>
-            <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+           
 
-                <div className="grid grid-cols-2 gap-4">
-
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
-                    <CategoryCard />
-
+                <div className=" flex flex-wrap p-5 flex-col md-auto">
+                   <div className=" flex flex-wrap p-5 flex-row md-auto">
+                       
+                    <CategoryCard imagePath="/images/tShirts.jpg" productName="T-shirt" />
+                    <CategoryCard imagePath="/images/jeans.jpg" productName="Jeans" />
+                    </div>
+                    <div className=" flex flex-wrap p-5 flex-row md-auto">
+                    <CategoryCard imagePath="/images/backpack.jpg" productName="Backpack" />
+                    <CategoryCard imagePath="/images/necklace.jpg" productName="Necklase" />
+                    </div>
 
 
                 </div>
 
-            </div>
+           
 
             <Welcome />
 

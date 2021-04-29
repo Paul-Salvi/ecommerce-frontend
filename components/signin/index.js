@@ -1,32 +1,27 @@
 
-
-
-
-
-
-
-
-
-
 import { auth, facebookProvider, googleProvider } from '../../services/firebase';
-
+ import SignInManager from '../../plugins/signInManager'
 function SignIn(props) {
   
   const LoginUser = value => (async () => {
     var provider=value;
+  var signInManager =new SignInManager();
      const response = await auth.signInWithPopup(provider === 'google' ? googleProvider : facebookProvider);
      if (response.additionalUserInfo) {
          const profile = response.additionalUserInfo.profile ;
          const id = profile.id;
          const name = provider === 'google' ? profile.given_name : profile.first_name;
-         console.log(response.additionalUserInfo,"response.additionalUserInfo")
+         console.log(response,"response.additionalUserInfo")
+         signInManager.signin(response.additionalUserInfo);
+         props.dialogClose(response.additionalUserInfo);
          // return { name, id };
+        
      }
      //return { name: null, id: null };
  });
  
  const close =  () => {
-   props.dialogClose();
+   props.dialogClose('');
  };
  
    return (

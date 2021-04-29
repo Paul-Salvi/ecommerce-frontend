@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../common/button/index'
 import FavButton from '../common/favButton/index'
@@ -6,8 +6,60 @@ import StarRatings from '../common/productStarRatings/index'
 import ProductColorOptions from '../common/productColorOption'
 import ProductSizeOptions from '../common/productSizeOption'
 import ProductSocialMediaOptions from '../common/productSocialMediaOptions'
+import CartManger from '../../plugins/cartManger';
 
+import { useRouter } from 'next/router'
 function ProductDetails({ productDetails }) {
+   var cartManger = new CartManger();
+   const router = useRouter();
+   const [productSizeOption,setProductSizeOption]=useState([
+      {
+         "size":"XS",
+         "value":"XS"
+      },
+      {
+         "size":"M",
+         "value":"M"
+      },
+      {
+         "size":"L",
+         "value":"L"
+      }
+
+   ]);
+   const [productColorOption,setProductColorOption]=useState([
+      {
+         "color":"red",
+         "value":"red"
+      },
+      {
+         "color":"white",
+         "value":"white"
+      },
+      {
+         "color":"blue",
+         "value":"blue"
+      }
+
+   ]);
+   const [productSize,setProductSize]=useState('SM');
+   const [productColor,setProductColor]=useState('');
+   
+   const addToCart = (productDetails) => {
+     let product=
+     {
+        "id":productDetails.id,
+        "title":productDetails.title,
+        "price":productDetails.price,
+        "category":productDetails.category,
+        "image":productDetails.image,
+       "size":productSize,
+       "color":productColor
+     }
+     cartManger.AddItemInCart(product);
+     router.push({ pathname: '/cart' })
+      console.log(productSize,"size",productColor,productDetails)
+  };
 
    if (!productDetails) {
       return (<> </>);
@@ -28,12 +80,12 @@ function ProductDetails({ productDetails }) {
                   </div>
                   <p className="leading-relaxed">{productDetails.description}</p>
                   <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                     <ProductColorOptions />
-                     <ProductSizeOptions />
+                     <ProductColorOptions options={productColorOption} getColor={(color)=>{setProductColor(color)}}/>
+                     <ProductSizeOptions options={productSizeOption} getProductSize={(size)=>{setProductSize(size)}} />
                   </div>
                   <div className="flex">
                      <span className="title-font font-medium text-2xl text-gray-900">${productDetails.price}</span>
-                     <Button
+                     <Button click={() => { addToCart(productDetails)}}
                         text="Add to Cart" />
                      <FavButton />
                   </div>
