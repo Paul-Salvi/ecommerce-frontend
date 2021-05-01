@@ -2,7 +2,7 @@
 
  function CategoryCard(props) {
   return (
-    <div className=" container w-96 h-72 mx-auto w-25 bg-white rounded-xl shadow-md overflow-hidden md:max-w-1xl transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110">
+    <div className=" container w-96 h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-1xl transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110">
             <div className="md:flex ">
               <div className="md:flex-shrink-0 ">
                 <img className="w-96 h-72 object-cover " src={props.imagePath} alt="Man looking at item at a store" />

@@ -8,7 +8,7 @@ function Home({ props }) {
         <Layout>
            
 
-                <div className=" flex flex-wrap p-5 flex-col md-auto">
+                <div className=" container-sm px-60">
                    <div className=" flex flex-wrap p-5 flex-row md-auto">
                        
                     <CategoryCard imagePath="/images/tShirts.jpg" productName="T-shirt" />
@@ -22,8 +22,7 @@ function Home({ props }) {
 
                 </div>
 
-           
-
+                
             <Welcome />
 
 
