@@ -1,63 +1,134 @@
+import { useRouter } from 'next/router'
+import SignIn from '../../signin/index';
+import React, { useEffect, useState } from 'react';
+import UserInfo from '../avatar/index';
+import Link from 'next/link'
+import SignInManager from '../../../plugins/signInManager';
+import ProductSearch from '../productSearch/index';
+function NavBar({ props }) {
+    const [loginShow, setloginShow] = useState(false);
+    // const [UserData, setUserData] = useState('');
+    const [UserName, setUserName] = useState('');
+    const [UserPhoto, setUserPhoto] = useState('');
+    const router = useRouter();
+    var signInManager = new SignInManager();
 
-const Header = () => (
+    const handleClick = (e) => {
+        e.preventDefault()
+        router.push({ pathname: '/about' })
+    }
 
-    <div>
+    const openModal = () => {
+        setloginShow(true);
+        console.log(loginShow, "aaaa")
+    }
+    const getUserdata = (user) => {
+        if (user != null && user != undefined) {
+            setUserName(user['profile']['name'])
+            setUserPhoto(user['profile']['picture'])
+        }
+    }
+    const signout = () => {
 
-        <nav
-            class="flex items-center justify-between flex-wrap bg-white py-4 lg:px-12 shadow border-solid border-t-2 border-blue-700">
+        signInManager.signOut();
+        setUserName('');
+        setUserPhoto('');
+    }
 
-            <div class="flex justify-between lg:w-auto w-full lg:border-b-0 pl-6 pr-2 border-solid border-b-2 border-gray-300 pb-5 lg:pb-0">
-                <div class="flex items-center flex-shrink-0 text-gray-800 mr-16">
-                    <span class="font-semibold text-xl tracking-tight">My Navbar</span>
+    useEffect(() => {
+        var userData = signInManager.signinUserData();
+        if (userData != '') {
+            console.log("userdata", userData)
+            getUserdata(userData);
+        }
+    }, [])
 
+    return (
+
+        <div className="container mx-auto sticky top-0 z-40 bg-white">
+            <div className="shadow-xs py-2 lg:py-2 z-50 relative">
+                <div className="flex justify-between items-center">
+
+                    <a href="/" className="p-2">
+                        <img src="/logo/shopit-logos_black.png" className="w-28 sm:w-48 h-auto" alt="logo" />
+                    </a>
+                    {
+                        loginShow ? <SignIn dialogClose={(userdata) => { setloginShow(false); getUserdata(userdata) }} /> : null
+                    }
+
+                    <div className="flex items-center">
+
+                        <div className=" relative mx-auto text-gray-600 lg:block hidden">
+                            <ProductSearch />
+                        </div>
+                    </div>
+
+                    <div className="flex items-center">
+                        {
+                            UserName == '' ? <a onClick={openModal}
+                                className="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">Sign
+                in</a>
+                                :
+                                // <span
+                                //     className="block text-3xl px-4 py-2 mb-2">{UserName}</span>
+                                <a onClick={signout}
+                                    className="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">Signout</a>
+                        }
+
+                        {
+                            UserName != '' ? <UserInfo userPhoto={UserPhoto} /> : null
+                        }
+
+                        {/* <a href="/account/dashboard" className="border-2 transition-all border-transparent hover:border-primary rounded-full p-2 sm:p-4 group">
+                            <img src="https://d33wubrfki0l68.cloudfront.net/f7d761469bf66852487412569632673f9d21d1f8/5e821/assets/img/icons/icon-user.svg" className="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 block group-hover:hidden" alt="icon user" />
+                            <img src="https://d33wubrfki0l68.cloudfront.net/813133414c7aa22b471f0e3efbe3ddfc3600d77e/3dc2c/assets/img/icons/icon-user-hover.svg" className="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 hidden group-hover:block" alt="icon user hover" />
+                        </a> */}
+                        <Link href="/cart">
+                            <a className="hidden lg:block border-2 transition-all border-transparent hover:border-primary rounded-full p-2 sm:p-4 ml-2 sm:ml-3 md:ml-5 lg:ml-8 group">
+
+                                <img src="https://d33wubrfki0l68.cloudfront.net/16f4de05841e1eea2fbe536d4053b73f0ad85baf/77013/assets/img/icons/icon-cart.svg" className="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 block group-hover:hidden" alt="icon cart" />
+                                <img src="https://d33wubrfki0l68.cloudfront.net/bcbeda5344e5934d7eaa7a3e7f6e86b78d79755b/6df24/assets/img/icons/icon-cart-hover.svg" className="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 hidden group-hover:block" alt="icon cart hover" />
+                            </a>
+                        </Link>
+
+                    </div>
+                    <div className="hidden">
+                        <i className="bx bx-menu text-primary text-3xl" ></i>
+                    </div>
                 </div>
-                <div class="block lg:hidden ">
-                    <button
-                        id="nav"
-                        class="flex items-center px-3 py-2 border-2 rounded text-blue-700 border-blue-700 hover:text-blue-700 hover:border-blue-700">
-                        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title>
-                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                        </svg>
-                    </button>
+                <div className="justify-center lg:pt-4 hidden lg:flex">
+                    <ul className="list-reset flex items-center">
+
+                        <li className="mr-10">
+                            <a href="/" className="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Home</a>
+                        </li>
+                        <li className="mr-10">
+                            <a href="/products" className="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Products</a>
+                        </li>
+
+
+
+                        <li className="mr-10">
+                            <a href="/about" className="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">About</a>
+                        </li>
+
+                        <li className="mr-10">
+                            <a href="/contact#faq" className="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">FAQ</a>
+                        </li>
+
+
+
+                        <li className="mr-10">
+                            <a href="/contact" className="block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Contact</a>
+                        </li>
+
+
+                    </ul>
                 </div>
             </div>
 
-            <div class="menu w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8">
-                <div class="text-md font-bold text-blue-700 lg:flex-grow">
-                    <a href="#responsive-header"
-                        class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                        Menu 1
-                </a>
-                    <a href="#responsive-header"
-                        class=" block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                        Menu 2
-                </a>
-                    <a href="#responsive-header"
-                        class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                        Menu 3
-                </a>
-                </div>
+        </div>
+    )
+}
 
-                <div class="relative mx-auto text-gray-600 lg:block hidden">
-                    <input
-                        class="border-2 border-gray-300 bg-white h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
-                        type="search" name="search" placeholder="Search" />
-                    <button type="submit" class="absolute right-0 top-0 mt-3 mr-2" />
-
-
-                </div>
-                <div class="flex ">
-                    <a href="#"
-                        class="block text-md px-4 py-2 rounded text-blue-700 ml-2 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">Sign
-                    in</a>
-
-                    <a href="#"
-                        class=" block text-md px-4  ml-2 py-2 rounded text-blue-700 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">login</a>
-                </div>
-            </div>
-
-        </nav>
-    </div>
-);
-
-export default Header;
+export default NavBar;

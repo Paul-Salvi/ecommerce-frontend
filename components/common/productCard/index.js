@@ -20,17 +20,17 @@ function products({ items }) {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             {items.map((product, index) => {
-              return <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
+              return <div key={index} className="lg:w-1/4 md:w-1/2 p-4 w-full">
                 <a className="block relative h-48 rounded overflow-hidden">
-                  <img alt="prod" className="object-cover object-center w-full h-full block" src={product.image} />
+                  <img alt="prod" className="object-cover object-center w-full h-full block" src={product.item.image} />
                 </a>
                 <div className="mt-4">
                   <StarRatings />
                   <LinkButton
-                    text={product.title}
-                    href={"product/" + product.id}
+                    text={product.item.title}
+                    href={"product/" + product.item.id}
                   />
-                  <Text text={"$ " + product.price} />
+                  <Text text={"$ " + product.item.price} />
                 </div>
               </div>
             })}

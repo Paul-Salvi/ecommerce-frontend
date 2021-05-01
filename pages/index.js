@@ -1,6 +1,4 @@
-import NavBar from '../components/common/navBar/index';
 import Welcome from './welcome'
-import Products from './products'
 import Layout from '../components/common/layout/index'
 import CategoryCard from '../components/common/product-category-card/'
 function Home({ props }) {
