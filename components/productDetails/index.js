@@ -7,10 +7,12 @@ import ProductColorOptions from '../common/productColorOption'
 import ProductSizeOptions from '../common/productSizeOption'
 import ProductSocialMediaOptions from '../common/productSocialMediaOptions'
 import CartManger from '../../plugins/cartManger';
+import WishlistManager from '../../plugins/wishlistManager';
 
 import { useRouter } from 'next/router'
 function ProductDetails({ productDetails }) {
    var cartManger = new CartManger();
+var wishlistManager=new WishlistManager();
    const router = useRouter();
    const [productSizeOption,setProductSizeOption]=useState([
       {
@@ -60,6 +62,21 @@ function ProductDetails({ productDetails }) {
      router.push({ pathname: '/cart' })
       console.log(productSize,"size",productColor,productDetails)
   };
+  const addToWishlist = (productDetails) => {
+   let product=
+   {
+      "id":productDetails.id,
+      "title":productDetails.title,
+      "price":productDetails.price,
+      "category":productDetails.category,
+      "image":productDetails.image,
+     "size":productSize,
+     "color":productColor
+   }
+   wishlistManager.AddItemInWishlist(product);
+   router.push({ pathname: '/wishlist' })
+    console.log(productSize,"size",productColor,productDetails)
+};
 
    if (!productDetails) {
       return (<> </>);
@@ -87,6 +104,8 @@ function ProductDetails({ productDetails }) {
                      <span className="title-font font-medium text-2xl text-gray-900">${productDetails.price}</span>
                      <Button click={() => { addToCart(productDetails)}}
                         text="Add to Cart" />
+                        <Button click={() => { addToWishlist(productDetails)}}
+                        text="Add to Wishlist" />
                      <FavButton />
                   </div>
                </div>
