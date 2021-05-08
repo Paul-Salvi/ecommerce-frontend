@@ -60,7 +60,7 @@ function NavBar({ props }) {
                 <div className="flex justify-between items-center">
 
                     <a href="/" className="p-2">
-                        <img src="/logo/shopit-logos_black.png" className="w-28 sm:w-48 h-auto" alt="logo" />
+                        <img src="/logo/shopit-logos_black.png" className="w-20 sm:w-32 h-auto" alt="logo" />
                     </a>
                     {/* {
                         loginShow ? <SignIn dialogClose={(userdata) => { setloginShow(false); getUserdata(userdata) }} /> : null
@@ -111,7 +111,7 @@ function NavBar({ props }) {
                     </div>
                    
                 </div>
-                <div className="justify-center lg:pt-4 hidden lg:flex">
+                <div className="justify-center lg:pt-1 hidden lg:flex">
                     <ul className="list-reset flex items-center">
 
                         <li className="mx-16 cursor-pointer">
