@@ -8,6 +8,7 @@ import * as React from 'react'
 import CartManger from '../../plugins/cartManger';
 import { useRouter } from 'next/router';
 import ProductQuantity from '../common/productQuantity'
+import SignInManager from '../../plugins/signInManager'
 
 
 
@@ -45,8 +46,17 @@ import ProductQuantity from '../common/productQuantity'
      console.log(item.quantity*item.price,"total_amount" ,total_amount)
    }) 
    const  proceed = () =>  {
+      var signInManager = new SignInManager();
+      var userData = signInManager.signinUserData();
+      if (userData != '' && userData != undefined) {
+         router.push({ pathname: '/checkout' })
+      }
+      else
+      {
+         var modal = document.getElementById("signinModal");
+         modal.style.display = "block";
+      }
       
-      router.push({ pathname: '/checkout' })
    };
    console.log(cartItem,"cart")
     if (!cartItem || cartItem.length <= 0) {
