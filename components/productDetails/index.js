@@ -74,7 +74,8 @@ var wishlistManager=new WishlistManager();
       "category":productDetails.category,
       "image":productDetails.image,
      "size":productSize,
-     "color":productColor
+     "color":productColor,
+     "quantity":quantity
    }
    wishlistManager.AddItemInWishlist(product);
    router.push({ pathname: '/wishlist' })

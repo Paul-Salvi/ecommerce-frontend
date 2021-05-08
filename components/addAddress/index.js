@@ -4,14 +4,19 @@ import * as React from 'react'
 import { useForm } from "react-hook-form";
 import FormError from '../common/form-error';
 
+import { AddnewAddress } from '../../plugins/addressManager';
+import { useRouter } from 'next/router';
 
 
  const AddAddress = () =>  {
+  const router = useRouter();
+
   const { register, handleSubmit,formState: { errors } } = useForm();
   const registerUser = (data) => 
   {
-
     console.log( data );
+    AddnewAddress(data);
+    router.push({ pathname: '/checkout' })
   }
  
     
@@ -19,13 +24,13 @@ import FormError from '../common/form-error';
       <div className="py-16 flex justify-center mx-auto">
          
     <form  onSubmit={handleSubmit(registerUser)} className="w-full max-w-lg">
-    <h1 className="p-5 text-center block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Deliver To</h1>
+    <h1 className="p-5 text-center block text-lg font-hk hover:font-bold transition-all text-secondary hover:text-primary border-b-2 border-white hover:border-primary px-2">Add Delivery Address</h1>
     <div className="flex flex-wrap -mx-3 mb-6">
       <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
           First Name
         </label>
-        <input type="text" name="first_name" id="first_name"   {...register("first_name", {
+        <input type="text" name="first_name" id="firstName"   {...register("first_name", {
             required: "Required",
           })} className={`appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white `} id="grid-first-name" type="text" placeholder="Jane" />
      
@@ -35,7 +40,7 @@ import FormError from '../common/form-error';
         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
           Last Name
         </label>
-        <input type="text" {...register("last_name", {
+        <input type="text" {...register("lastName", {
             required: "Required",
           })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
            { errors.last_name &&    <FormError error="Last Name Is invalid" />}   
@@ -56,7 +61,7 @@ import FormError from '../common/form-error';
         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
         Address Line 2
         </label>
-        <input type="text" name="address_2" {...register("address_2", {
+        <input type="text" name="address2" {...register("address2", {
             required: "Required",
           })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
        { errors.address_2 &&    <FormError error="Address Is invalid" />}   
@@ -117,7 +122,7 @@ import FormError from '../common/form-error';
         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
           Zip
         </label>
-        <input type="text"  {...register("zicode", {
+        <input type="text" name="zip" {...register("zip", {
             required: "Required",
           })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210" />
       { errors.zicode &&    <FormError error="zicode No Is invalid" />}  
@@ -135,32 +140,3 @@ import FormError from '../common/form-error';
 }
 
 export default AddAddress;
-
-
-// import { useForm } from "react-hook-form";
-
-// export default function AddAddress() {
-//   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-//   const onSubmit = data => console.log(JSON.stringify(data));
-
-//   //console.log(watch("nma")); // watch input value by passing the name of it
-
-//   return (
-//     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       {/* register your input into the hook by invoking the "register" function */}
-//       <input  type="text" {...register("message", {
-//             required: "Required",
-//           })}/>
-      
-//       {/* include validation with required or other standard HTML validation rules */}
-//       <input type="text"  {...register("message1", {
-//             required: "Required",
-//           })} />
-//       {/* errors will return when field validation fails  */}
-//       {errors.exampleRequired && <span>This field is required</span>}
-      
-//       <input type="submit" />
-//     </form>
-//   );
-// }
