@@ -17,5 +17,5 @@ function ProductDetails({ productInfo }) {
          />
       </Layout>
    )
-};
+}
 export default ProductDetails;
