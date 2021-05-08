@@ -24,8 +24,20 @@ class CartManger {
      else
      {
       items=JSON.parse(jsCookie.get('cartItems'));
-      items.push(item)
-      console.log(items,"AddItemInCart")
+      var already_available_item=items.find((data,index) => {
+          if(data.id == item.id && data.size == item.size )
+          {
+            items[index]['quantity']+=item.quantity
+            return data;
+          }
+          })
+          if(already_available_item==undefined)
+          {
+            items.push(item)
+          }
+      
+     
+      console.log(items,"AddItemInCart====",already_available_item)
       jsCookie.set('cartItems', JSON.stringify(items))
      }
 

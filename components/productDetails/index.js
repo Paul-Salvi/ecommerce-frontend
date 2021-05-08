@@ -10,6 +10,7 @@ import CartManger from '../../plugins/cartManger';
 import WishlistManager from '../../plugins/wishlistManager';
 
 import { useRouter } from 'next/router'
+import ProductQuantity from '../common/productQuantity';
 function ProductDetails({ productDetails }) {
    var cartManger = new CartManger();
 var wishlistManager=new WishlistManager();
@@ -29,6 +30,7 @@ var wishlistManager=new WishlistManager();
       }
 
    ]);
+   const [quantity,setQuantity]=useState(1);
    const [productColorOption,setProductColorOption]=useState([
       {
          "color":"red",
@@ -56,11 +58,12 @@ var wishlistManager=new WishlistManager();
         "category":productDetails.category,
         "image":productDetails.image,
        "size":productSize,
-       "color":productColor
+       "color":productColor,
+       "quantity":quantity
      }
      cartManger.AddItemInCart(product);
      router.push({ pathname: '/cart' })
-      console.log(productSize,"size",productColor,productDetails)
+     console.log(productSize,"size",productColor,productDetails)
   };
   const addToWishlist = (productDetails) => {
    let product=
@@ -71,7 +74,8 @@ var wishlistManager=new WishlistManager();
       "category":productDetails.category,
       "image":productDetails.image,
      "size":productSize,
-     "color":productColor
+     "color":productColor,
+     "quantity":quantity
    }
    wishlistManager.AddItemInWishlist(product);
    router.push({ pathname: '/wishlist' })
@@ -99,7 +103,8 @@ var wishlistManager=new WishlistManager();
                   <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                      <ProductColorOptions options={productColorOption} getColor={(color)=>{setProductColor(color)}}/>
                      <ProductSizeOptions options={productSizeOption} getProductSize={(size)=>{setProductSize(size)}} />
-                  </div>
+                      <ProductQuantity quantity={quantity}  getQuantity={(quantity)=>{setQuantity(quantity) }} />
+                       </div>
                   <div className="flex">
                      <span className="title-font font-medium text-2xl text-gray-900">${productDetails.price}</span>
                      <Button click={() => { addToCart(productDetails)}}

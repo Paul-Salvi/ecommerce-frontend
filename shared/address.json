@@ -1,0 +1,26 @@
+[
+   {
+     "id": 4,
+     "firstName": "pavan",
+     "lastName": "pavan",
+     "address1": "test123",
+     "address2": "bhaur",
+     "email": "pdj2212@gmail.com",
+     "phone": "123456789",
+     "city": "chalisgaon",
+     "state": "maharastra",
+     "zip": "424106"
+   },
+   {
+    "id": 2,
+    "firstName": "pavan",
+    "lastName": "pavan",
+    "address1": "test123",
+    "address2": "bhaur",
+    "email": "pdj2212@gmail.com",
+    "phone": "123456789",
+    "city": "chalisgaon",
+    "state": "maharastra",
+    "zip": "424106"
+  }
+ ]
