@@ -52,10 +52,65 @@ function NavBar({ props }) {
             setLogin(true)
         }
     }, [])
+    const onFilter = (e) =>{
+         
+const txns = [
+    {
+      date: "2019-11-29",
+      description: "HACKERBANK1 BP DES: MERCH PMT ID:1358570",
+      type: 0,
+      amount: 1520.34,
+      balance: "$12,234.45"
+    },
+    {
+      date: "2019-12-01",
+      description: "THE HACKERUNIVERSITY DES: CCD+ ID:0000232343",
+      type: 0,
+      amount: 1000,
+      balance: "$12,234.45"
+    },
+    {
+      date: "2019-11-25",
+      description: "HACKERBANK DES:DEBIT O ID: 0000987945787897987987",
+      type: 1,
+      amount: 2450.45,
+      balance: "$12,234.45"
+    },
+    {
+      date: "2019-12-03",
+      description: "HACKERBANK INC. DES:CCD+ ID: 33375894749",
+      type: 0,
+      amount: 1985.4,
+      balance: "$12,234.45"
+    },
+    {
+      date: "2019-11-29",
+      description: "HACKERBANK DES: DEBIT O ID:00097494729",
+      type: "Debit",
+      amount: 564,
+      balance: "$12,234.45"
+    },
+    {
+      date: "2019-11-30",
+      description: "CREDIT CARD PAYMENT ID: 222349083",
+      type: 1,
+      amount: 1987,
+      balance: "$12,234.45"
+    }
+  ];
 
+       
+        var dummy = txns.sort((a, b) => (a.amount > b.amount) ? 1 : -1);
+        console.log(dummy)
+      }
     return (
 
         <div className="container mx-auto sticky top-0 z-40 bg-white">
+             <section className="layout-row align-items-center justify-content-center">
+        <label className="mr-10">Transaction Date</label>
+        <input id="date" type="date" defaultValue="2019-11-29" onChange={onFilter} />
+        <button className="small">Filter</button>
+      </section>
             <div className="shadow-xs py-2 lg:py-2 z-50 relative">
                 <div className="flex justify-between items-center">
 
